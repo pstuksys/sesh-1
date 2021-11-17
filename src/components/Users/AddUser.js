@@ -5,7 +5,6 @@ import classes from '../Users/AddUser.module.css'
 
 
 const AddUser = (props) => {
-    //first value is the '' and second value is kina like function
     const [enteredUsername, setEnteredUsername ] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
 
@@ -17,7 +16,7 @@ const AddUser = (props) => {
         if (+enteredAge < 1) {
             return;
         }
-        console.log(enteredUsername,enteredAge)
+        props.onAddUser(enteredUsername,enteredAge);
         setEnteredUsername('')
         setEnteredAge('')
     }
@@ -34,7 +33,7 @@ const AddUser = (props) => {
             <form onSubmit={addUserHandler}>
                 <label htmlFor='username'>Username</label>
                 <input id='username' type="text"
-                 value={setEnteredUsername} onChange={usernameChangeHandler}/>
+                 value={enteredUsername} onChange={usernameChangeHandler}/>
                 <label htmlFor='age'>Age (Years)</label>
                 <input id='age' type="number" 
                  value={enteredAge} onChange={ageChangeHandler}/>
